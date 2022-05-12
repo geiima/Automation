@@ -3,8 +3,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Threading;
 
 namespace Automationpracticenew
 {
@@ -13,9 +11,8 @@ namespace Automationpracticenew
 
         private string URL = "http://automationpractice.com/index.php";
 
-        //signin data
-        
-        string reg_email = "newtest65@test.com";
+        //signin data       
+        string reg_email = "newtest999@test.com";
         string reg_email_registered = "testuser_newtest@test.com";
 
         //registration data
@@ -46,8 +43,6 @@ namespace Automationpracticenew
             Assert.IsTrue(logout_btn.Displayed);
         }
 
-   
-
         [Test]
         public void LoginTest()
         {
@@ -74,7 +69,6 @@ namespace Automationpracticenew
             Assert.AreEqual(txt, "\"DRESS\"", "No dress found");
         }
 
-
         [Test]
         public void RegistrationPageTest()
         {
@@ -85,15 +79,11 @@ namespace Automationpracticenew
             RegistrationActions();
             IWebElement logout_btn = Driver.FindElement(By.CssSelector("#header > div.nav > div > div > nav > div:nth-child(2) > a"));
             Assert.IsTrue(logout_btn.Displayed);
-
         }
-
-
 
         [Test]
         public void SearchAndBuyItemTest()
         {
-
             SignInActions();
 
             LoginPage loginPage = new LoginPage();
@@ -135,15 +125,12 @@ namespace Automationpracticenew
             IWebElement complete_order = Driver.FindElement(By.CssSelector("#center_column > div > p > strong"));
             string txt = complete_order.Text;
             Assert.AreEqual(txt, "Your order on My Store is complete.", "Order is not completed");
-
-
-
         }
 
-        //[TearDown]
-        //public void Close()
-        //{
-        //    Driver.Close();
-        //}
+        [TearDown]
+        public void Close()
+        {
+            Driver.Close();
+        }
     }
 }

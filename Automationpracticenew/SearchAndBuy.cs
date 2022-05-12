@@ -9,18 +9,12 @@ namespace Automationpracticenew
 {
     internal class SearchAndBuy : WebDriver
     {
-        IWebElement search_item_txt = Driver.FindElement(By.Id("search_query_top"));
-        
-        
+        IWebElement search_item_txt = Driver.FindElement(By.Id("search_query_top"));      
 
         public void EnterItemAndFind(string search_item)
         {
             search_item_txt.SendKeys(search_item);
             
         }
-
-
-       
-
     }
 }
